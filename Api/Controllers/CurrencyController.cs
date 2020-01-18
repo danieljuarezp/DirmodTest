@@ -21,6 +21,16 @@ namespace Api.Controllers
         }
 
         /// <summary>
+        /// Metodo get por default
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public string Get()
+        {         
+            return "Bienvenido a la api de conversión de divisas";
+        }
+
+        /// <summary>
         /// Retorna todas las cotizaciones desde una divisa en especifico
         /// </summary>
         /// <returns></returns>
