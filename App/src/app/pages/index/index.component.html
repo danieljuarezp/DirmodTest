@@ -1,2 +1,133 @@
-<a routerLink="/Rate">Todas las monedas</a>
-<a routerLink="/CurrencyConverter">Cotizacioness</a>
+<section class="hero is-link is-fullheight">
+  <!-- Hero head: will stick at the top -->
+  <div class="hero-head">
+    <header class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item">
+            <img src="http://pluspng.com/img-png/logo-javascript-png-javascript-js-icon-256.png" alt="Logo">
+          </a>
+            <span class="navbar-item">
+              <a class="button is-info is-inverted" href="https://github.com/danieljuarezp/DirmodTest" target="_blank">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>GitHub</span>
+              </a>
+            </span>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <!-- Hero content: will be in the middle -->
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title">
+        Cotizador de divisas
+      </h1>
+      <h2 class="subtitle">
+        Test Interfell-Dirmod
+      </h2>
+      <div class="card">
+        <footer class="card-footer">
+          <a class="card-footer-item" (click)="changeType(true)">Todas las monedas</a>
+          <a class="card-footer-item" (click)="changeType(false)">Cotizaciones</a>
+        </footer>
+      </div>
+      <br>
+      <div class="tile">
+        <div class="tile is-ancestor">
+          <div class="tile is-parent" *ngIf="allRates">
+            <article class="tile is-child notification is-info">
+              <p class="title">Todas las monedas</p>
+              <div class="content">
+                <div class="field is-grouped is-grouped-centered">
+                  <div class="control">
+                    <div class="select">
+                      <select (change)="changeDefaultSource($event.target.value)">
+                        <option *ngFor="let currency of defaultCurrencies" value="{{currency}}" [selected]="currency == defaultSource">{{currency}}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <button class="button is-success is-rounded" (click)="getRate()">Enviar</button>
+              </div>
+            </article>
+          </div>
+          <div class="tile is-parent" *ngIf="!allRates">
+            <article class="tile is-child notification is-info">
+              <p class="title">Cotizaciones</p>
+              <div class="content">
+                <div class="field is-grouped is-grouped-centered">
+                  <div class="control">
+                    <div class="select">
+                      <select (change)="changeDefaultSource($event.target.value)">
+                        <option *ngFor="let currency of defaultCurrencies" value="{{currency}}" [selected]="currency == defaultSource">{{currency}}</option>
+                      </select>
+                    </div>
+                  </div>
+              </div>
+              <div class="content">
+                <div class="field is-grouped is-grouped-centered">
+                  <div class="control">
+                    <div class="select">
+                      <select (change)="changeDefaultTarget($event.target.value)">
+                        <option *ngFor="let currency of defaultCurrencies" value="{{currency}}" [selected]="currency == defaultTarget">{{currency}}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="content">
+                <div class="field is-grouped is-grouped-centered">
+                  <div class="control">
+                    <input class="input is-primary" type="number" [value]="defaultQuality" (change)="changeDefaultQuality($event.target.value)">
+                  </div>
+                </div>          
+                <button class="button is-success is-rounded" (click)="getCurrency()">Enviar</button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="tile">
+        <div class="tile is-ancestor">
+          <div class="tile is-parent">
+            <article class="tile is-child notification is-link">
+              <p class="title">Cotización</p>
+              <div class="content">
+                <h5 class="title is-5" *ngIf="loading">Cargando...</h5>
+                <div *ngIf="!loading">
+                  <div *ngIf="allRates">
+                    Divisa <strong>{{defaultSource}}</strong>
+                    <br>
+                    <div class="notification is-primary" *ngFor="let rate of rates">
+                      <button class="delete"></button>                     
+                        <strong>Moneda:</strong> {{rate.to}} 
+                        <strong>Precio:</strong> {{rate.rate}} 
+                    </div>
+                  </div>
+                  <div *ngIf="!allRates">
+                    Divisas <strong>{{defaultSource}}</strong>-<strong>{{defaultTarget}}</strong>
+                    <br>
+                    <div class="notification is-primary">
+                      <button class="delete"></button>                     
+                      <strong>Moneda:</strong> {{currencyPrice.source}} 
+                      <strong>Moneda:</strong> {{currencyPrice.target}}
+                      <strong>Valor:</strong> {{currencyPrice.value}} 
+                      <strong>Cantidad:</strong> {{currencyPrice.quantity}}
+                      <strong>Total:</strong> {{currencyPrice.amount}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

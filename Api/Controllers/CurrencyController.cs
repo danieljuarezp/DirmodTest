@@ -1,4 +1,5 @@
 ﻿using Api.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -24,6 +25,7 @@ namespace Api.Controllers
         /// Metodo get por default
         /// </summary>
         /// <returns></returns>
+        [EnableCors("MyPolicyCORS")]
         [HttpGet]
         public string Get()
         {         
@@ -34,6 +36,7 @@ namespace Api.Controllers
         /// Retorna todas las cotizaciones desde una divisa en especifico
         /// </summary>
         /// <returns></returns>
+        [EnableCors("MyPolicyCORS")]
         [HttpGet("{source}")]
         public CurrenciesResponseModel Get(string source)
         {
@@ -50,6 +53,7 @@ namespace Api.Controllers
         /// <param name="target"></param>
         /// <param name="quality"></param>
         /// <returns></returns>
+        [EnableCors("MyPolicyCORS")]
         [HttpGet("{source}/{target}/{quality}")]
         public CurrencyResponseModel Get(string source,string target, int quality)
         {
