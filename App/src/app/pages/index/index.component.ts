@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { getRate, getCurrency } from '../../services/service';
+import { currencies } from '../../consts/const';
 
 @Component({
   selector: 'app-index',
@@ -13,7 +14,7 @@ export class IndexComponent implements OnInit {
   defaultSource: string = 'USD';
   defaultTarget: string = 'MXN';
   defaultQuality: number = 1;
-  defaultCurrencies: string[] = ['USD', 'MXN', 'ARS', 'BRL', 'BTC', 'CAD', 'CRC', 'EUR'];
+  defaultCurrencies: string[] = currencies;
   rates: any;
   currencyPrice: any;
 

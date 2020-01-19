@@ -1,5 +1,4 @@
-﻿
-namespace Api.Models
+﻿namespace Api.Models
 {
     public class CurrencyResponseModel
     {

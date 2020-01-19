@@ -35,6 +35,7 @@ namespace Api.Controllers
         /// <summary>
         /// Retorna todas las cotizaciones desde una divisa en especifico
         /// </summary>
+        /// <param name="source">Divisa principal</param>
         /// <returns></returns>
         [EnableCors("MyPolicyCORS")]
         [HttpGet("{source}")]
@@ -49,9 +50,9 @@ namespace Api.Controllers
         /// <summary>
         /// Retorna la cotizacion entre dos divisas
         /// </summary>
-        /// <param name="source"></param>
-        /// <param name="target"></param>
-        /// <param name="quality"></param>
+        /// <param name="source">Divisa principal</param>
+        /// <param name="target">Divisa a convertir</param>
+        /// <param name="quality">Cantidad</param>
         /// <returns></returns>
         [EnableCors("MyPolicyCORS")]
         [HttpGet("{source}/{target}/{quality}")]

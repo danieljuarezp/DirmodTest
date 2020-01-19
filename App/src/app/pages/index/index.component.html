@@ -105,16 +105,14 @@
                     Divisa <strong>{{defaultSource}}</strong>
                     <br>
                     <div class="notification is-primary" *ngFor="let rate of rates">
-                      <button class="delete"></button>                     
-                        <strong>Moneda:</strong> {{rate.to}} 
-                        <strong>Precio:</strong> {{rate.rate}} 
+                      <strong>Moneda:</strong> {{rate.to}} 
+                      <strong>Precio:</strong> {{rate.rate}} 
                     </div>
                   </div>
                   <div *ngIf="!allRates">
                     Divisas <strong>{{defaultSource}}</strong>-<strong>{{defaultTarget}}</strong>
                     <br>
                     <div class="notification is-primary">
-                      <button class="delete"></button>                     
                       <strong>Moneda:</strong> {{currencyPrice.source}} 
                       <strong>Moneda:</strong> {{currencyPrice.target}}
                       <strong>Valor:</strong> {{currencyPrice.value}} 

@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { baseURL } from '../consts/const';
 
 const client = axios.create({
-    baseURL: 'https://localhost:44373/Cotizacion/'
+    baseURL: baseURL
 });
 
 export function getRate(source: string){
